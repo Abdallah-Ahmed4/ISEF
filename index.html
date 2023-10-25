@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>كاميرا الويب</title>
+</head>
+<body>
+  <button id="camera-front">فتح الكاميرا الأمامية</button>
+  <button id="camera-back">فتح الكاميرا الخلفية</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // فتح الكاميرا الأمامية
+      $("#camera-front").click(function() {
+        navigator.mediaDevices.getUserMedia({
+          video: true,
+        }).then(function(stream) {
+          var video = document.querySelector("#video");
+          video.srcObject = stream;
+          video.play();
+        });
+      });
+
+      // فتح الكاميرا الخلفية
+      $("#camera-back").click(function() {
+        navigator.mediaDevices.getUserMedia({
+          video: true,
+          facingMode: "back",
+        }).then(function(stream) {
+          var video = document.querySelector("#video");
+          video.srcObject = stream;
+          video.play();
+        });
+      });
+    });
+  </script>
+  <video id="video" width="640" height="480"></video>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.8.0/tensorflow.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tfjs-models/4.0.0/coco.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
