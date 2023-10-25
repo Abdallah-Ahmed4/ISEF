@@ -7,6 +7,7 @@ import coco from "tfjs-models/coco";
 // فتح الكاميرا الأمامية
 const cameraFront = document.querySelector("#camera-front");
 cameraFront.addEventListener("click", () => {
+  // فتح الكاميرا على الأجهزة المحمولة
   navigator.mediaDevices.getUserMedia({
     video: true,
     facingMode: "user",
@@ -20,6 +21,7 @@ cameraFront.addEventListener("click", () => {
 // فتح الكاميرا الخلفية
 const cameraBack = document.querySelector("#camera-back");
 cameraBack.addEventListener("click", () => {
+  // فتح الكاميرا على الأجهزة المحمولة
   navigator.mediaDevices.getUserMedia({
     video: true,
     facingMode: "back",
@@ -55,7 +57,7 @@ const showNames = (objects) => {
   }
 };
 
-// استدعاء دالة التعرف على الأشياء عند تغيير الفيديو
+// استخراج الصورة من الفيديو عند تغيير الفيديو
 const video = document.querySelector("#video");
 video.addEventListener("change", () => {
   // استخراج الصورة من الفيديو
